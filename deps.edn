@@ -1,5 +1,7 @@
 {:paths ["src" "resources"]
- :deps {reagent/reagent {:mvn/version "1.2.0"}}
+ :deps {reagent/reagent {:mvn/version "1.2.0"}
+        com.pitch/uix.core {:mvn/version "1.0.1"}
+        com.pitch/uix.dom {:mvn/version "1.0.1"}}
 
  :aliases
  {:nextjournal/clerk

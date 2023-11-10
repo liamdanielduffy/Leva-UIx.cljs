@@ -1,5 +1,6 @@
 {:deps {:aliases [:dev :nextjournal/clerk]}
- :dev-http {8765 "public"}
+ :dev-http {8765 "public"
+            3000 "src/public"}
  :builds
  {:clerk
   {:target :esm
@@ -17,4 +18,10 @@
               [nextjournal.clerk.static-app
                leva.clerk-ui]}}
    :js-options
-   {:output-feature-set :es8}}}}
+   {:output-feature-set :es8}}
+
+  :app {:target     :browser
+        :output-dir "src/public/js"
+        :asset-path "/js"
+        :modules    {:app {:entries [cljs-leva.app]}}
+        :devtools   {:after-load cljs-leva.app/mount-root}}}}

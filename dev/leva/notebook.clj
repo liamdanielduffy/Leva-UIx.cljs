@@ -75,7 +75,7 @@
 
 (show-sci
  (defonce !synced
-   (reagent/atom
+   (atom
     {:number 10
      :color {:r 10 :g 12 :b 4}
      :string "Hi!"
@@ -386,14 +386,14 @@
    :Hex8 "#8b33ffaa"
    :RgbString "rgb(255, 47, 162)"
    :RgbaString "rgba(233, 30, 99, 0.9)"
-   :Rgb {:r 0 :g 150 :b 136 }
+   :Rgb {:r 0 :g 150 :b 136}
    :Rgba {:r 139 :g 195 :b 74 :a 0.5}
    :Hsl {:h 4 :s 90 :l 58}
    :Hsla {:h 36 :s 100 :l 50 :a 1}
    :HslString "hsl(199, 98%, 48%)"
    :HslaString "hsla(187, 1%, 42%, 0.9)"
-   :Hsv { :h 238 :s 100 :v 70 }
-   :Hsva { :h 58 :s 92 :v 100 :a 0.3 }}])
+   :Hsv {:h 238 :s 100 :v 70}
+   :Hsva {:h 58 :s 92 :v 100 :a 0.3}}])
 
 ;; #### 2D Vector
 

@@ -1,13 +1,13 @@
-node_modules/
-public/js
+*node_modules/*
+*public/js*
 
-/target
-/checkouts
-/src/gen
+*/target*
+*/checkouts*
+*/src/gen*
 
-pom.xml
-!template/pom.xml
-pom.xml.asc
+*pom.xml*
+*!template/pom.xml*
+*pom.xml.asc*
 *.iml
 *.jar
 *.log
@@ -17,8 +17,13 @@ pom.xml.asc
 .nrepl-*
 .DS_Store
 
-.hgignore
-.hg/
-.clerk/
-.cache/
-public
+*.hgignore*
+*.hg/*
+*.clerk/*
+*.cache/*
+*public*
+
+**.clj-kondo**
+**.lsp**
+**.cpcache**
+*.calva*

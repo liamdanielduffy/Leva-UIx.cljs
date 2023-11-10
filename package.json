@@ -7,6 +7,10 @@
     "gh-pages": "gh-pages -d public/build --dotfiles true"
   },
   "dependencies": {
+    "@pixi/react": "^7.1.1",
+    "@react-three/fiber": "^8.15.10",
+    "pixi.js": "^7.3.2",
+    "three": "^0.158.0",
     "@codemirror/autocomplete": "6.4.1",
     "@codemirror/commands": "6.2.1",
     "@codemirror/lang-markdown": "6.0.0",

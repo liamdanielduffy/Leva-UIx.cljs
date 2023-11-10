@@ -1,6 +1,6 @@
 (ns leva.sci
   "Functions and vars for installation of all namespaces into an SCI context."
-  (:require [leva.core]
+  (:require [leva.uix]
             [leva.types]
             [sci.core :as sci]
             [sci.ctx-store]))
