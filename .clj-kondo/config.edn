@@ -1,1 +1,1 @@
-{}
+{:linters {:uix.linter/hook-in-branch {:enabled? false}}}

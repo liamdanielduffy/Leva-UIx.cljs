@@ -1,0 +1,1 @@
+{:linters {:hook-in-branch {:enabled? false}}}

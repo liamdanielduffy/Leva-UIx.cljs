@@ -117,6 +117,8 @@
 ;; declaring elements of the global panel and any subpanels you might create.
 
 (defui Config [{:keys [opts children]}]
+  ;; (js/console.log "debug config" opts)
+
   "Component that configures a Leva panel with the supplied map of `opts` without
   explicitly rendering any inputs into it. If `:store` is not provided,
   configures the globally available Leva panel.
@@ -173,11 +175,12 @@
         "If you'd like to provide your own :store, "
         "see [[leva.core/Config]]."))
 
-
   (let [store (l/useCreateStore)]
-    ($ Config (assoc opts :store store) children)))
+    (js/console.log "debug subpanel opts: " opts)
+    ($ Config {:opts (assoc opts :store store)} children)))
 
 (defui Controls [{:keys [opts]}]
+  (js/console.log "here")
   "Component that renders inputs into a global or local Leva control panel,
   possibly synchronizing the panel's state into a provided atom.
 
@@ -215,7 +218,8 @@
         !state     (:atom opts)
         initial    (if !state (.-state !state) {})
         ks         (keys initial)
-        opts       (update opts :store #(or % (l/useStoreContext)))
+        store-context (l/useStoreContext)
+        opts       (update opts :store #(or % store-context))
 
         ;; NOTE that if we want to add a hook deps array here, we can conj it
         ;; onto the end of the vector returned by [[leva.schema/opts->argv]]. In
@@ -228,15 +232,23 @@
         ;; in [[leva.schema/opts->argv]], the return value here is no longer a
         ;; pair.
         [_ set] (apply l/useControls (schema/opts->argv opts))]
+
+    (js/console.log (schema/opts->argv opts))
+    (js/console.log "hello world")
+
     (uix.core/use-effect
      (fn []
+       (js/console.log "hello world")
        (when !state
          (let [watch-fn (fn [_ _ _ new-state]
                           (set
                            (clj->js
                             (select-keys new-state ks))))
+
                cleanup-fn (fn []
                             (remove-watch !state watch-id))]
+
            (add-watch !state watch-id watch-fn)
+
            #(cleanup-fn))))
-     nil)))
+     [watch-id set ks !state])))
